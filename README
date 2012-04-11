@@ -1,1 +1,6 @@
 The PHP Array Configuration Solution
+------------------------------------
+
+* based on PHP 5.3
+* to use classes, a class autoloader is required
+* all files are stored in UTF-8 encoding
