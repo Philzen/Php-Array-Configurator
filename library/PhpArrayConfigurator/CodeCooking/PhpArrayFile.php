@@ -41,15 +41,17 @@ namespace PhpArrayConfigurator\CodeCooking
 				/** Evaluate VALUE **/
 				if (is_string($value))
 				{
-					$returnString .= "'$value'\n";
+					$returnString .= "'$value'";
 				}
 				elseif (is_array($value)) {
 					$returnString .= "array(\n";
 					$returnString .= self::recurse($value);
-					$returnString .= self::getCurrentIndentation() . "),\n";
+					$returnString .= self::getCurrentIndentation() . ")";
 				}
 				else
-					$returnString .= $value . "\n";
+					$returnString .= $value;
+
+				$returnString .= ",\n";
 			}
 			self::$recursionLevel--;
 			return $returnString;
