@@ -1,4 +1,8 @@
 <?php
+	/**
+	 * VERY SIMPLE TEST HELPER SCRIPT
+	 * @abstract Test config file read and write. Generated Results in sub-directory /asset need to be compared by hand
+	 */
 
 	include '../../library/PhpArrayConfigurator/ConfigFile.php';
 	include '../../library/PhpArrayConfigurator/CodeCooking/PhpArrayFile.php';
