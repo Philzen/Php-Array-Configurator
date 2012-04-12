@@ -1,6 +1,21 @@
+------------------------------------
+---    PHP ARRAY CONFIGURATOR    ---
+------------------------------------
 The PHP Array Configuration Solution
 ------------------------------------
 
+What it is:
+A means to open, edit, and write to php array config files (files which return a PHP config array).
+
+How to use:
+Currently in Version 0.1 (see https://github.com/Philzen/Php-Array-Configurator/wiki for Roadmap and Vision Statement), it consists of a library providing two classes for reading, updating and writing php array include files. Have a look in the at testConfigFile.php to get a first idea of how it can be used. All code in this project is annotated with PHP DocBlocks, so if you have a proper IDE you will have not much trouble using the classes straightaway.
+
+Technical Nitty Gritty:
 * based on PHP 5.3
-* to use classes, a class autoloader is required
 * all files are stored in UTF-8 encoding
+* to use library classes, a class autoloader is recommended
+
+License:
+Definately Open-Source, free-of-charge for everybody but also provided "as-is" without any further liabilities by it's creator(s) - such as in GNU, MIT or BSD Licence.
+The only current exception to this general licence:
+* No portion of this code may ever be used in an application used in the arms industry or by its affiliates.
