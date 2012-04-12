@@ -22,17 +22,24 @@ namespace PhpArrayConfigurator
 		/**
 		 * Read PHP Array File (non-blocking file access)
 		 * @param string $filePath
-		 * @return boolean True if array was successfully loaded, False if file could not be read or did not return an array
+		 * @return boolean True if array was successfully loaded or throws an exception
 		 */
 		public function open($filePath)
 		{
 			$this->currentFilePath = $filePath;
-			if (file_exists($filePath)) {
-				$this->configArray = include $filePath;
-				return true;
+			if (file_exists($filePath))
+			{
+				$fileContents = include $filePath;
+				if (is_array($fileContents))
+				{
+					$this->configArray = $fileContents;
+					return true;
+				}
+
+				throw new \Exception("The File '$filePath' did not return an array on inclusion.");
 			}
 
-			return false;
+			throw new \Exception("The File '$filePath' does not exist.");
 		}
 
 		/**
@@ -59,7 +66,7 @@ namespace PhpArrayConfigurator
 		}
 
 		/**
-		 * @param type $saveTo If provided, a new copy will be created and then become the current working copy.
+		 * @param string $saveTo If provided, a new copy will be created and then become the current working copy.
 		 * Hint: Developers may want to ensure that no already existing file is overwritten, unless explicitly desired so.
 		 * @return bool False, if the updates could not be written.
 		 */
