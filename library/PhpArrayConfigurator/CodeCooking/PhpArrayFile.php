@@ -23,6 +23,9 @@ namespace PhpArrayConfigurator\CodeCooking
 	 **/
 	 ';
 
+		/**
+		 * @var int Internal Recursion Counter for recurse()-Method
+		 */
 		protected static $recursionLevel = 0;
 
 		/**
@@ -39,6 +42,11 @@ namespace PhpArrayConfigurator\CodeCooking
 			return $returnString;
 		}
 
+		/**
+		 * Recursive Converter Function
+		 * @param array $array
+		 * @return string The PHP Code representation, in a nicely formatted way
+		 */
 		protected static function recurse(array $array)
 		{
 			$returnString = "";
@@ -74,6 +82,10 @@ namespace PhpArrayConfigurator\CodeCooking
 			return $returnString;
 		}
 
+		/**
+		 * Get Indentation (currently harcoded to Tabs) for current recursion level
+		 * @return string A string with the indentation characters
+		 */
 		protected static function getCurrentIndentation()
 		{
 			$returnString = "\t";
@@ -82,6 +94,12 @@ namespace PhpArrayConfigurator\CodeCooking
 			return $returnString;
 		}
 
+		/**
+		 * An equivalent of PHP's implode function for arrays - this array-safe
+		 * concatenation of strings (require quoting) vs. simple type values
+		 * @param array $values
+		 * @return string
+		 */
 		protected static function implodeUnindexed(array $values)
 		{
 			$returnString = '';
