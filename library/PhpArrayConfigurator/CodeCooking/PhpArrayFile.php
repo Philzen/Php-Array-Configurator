@@ -18,25 +18,25 @@ namespace PhpArrayConfigurator\CodeCooking
 			$returnString = "<?php\n\treturn array(\n";
 			//self::$recursionLevel = 0;	// initialise recursion level value
 			$returnString .= self::recurse($array);
-			$returnString .= "\n\t);";
+			$returnString .= "\t);";
 			return $returnString;
 		}
 
 		protected static function recurse(array $array)
 		{
 			$returnString = "";
-
 			self::$recursionLevel++;
 			foreach ($array as $key => $value)
 			{
+				$returnString .= self::getCurrentIndentation ();
 				/** Evaluate KEY **/
 				if (is_string($key))
-					$returnString .= self::getCurrentIndentation () . "'$key' => ";
+					$returnString .= "'$key' => ";
 				elseif($key === 0) {	// Start of an unindexed array
-					$returnString .= implode(', ', $array);
+					$returnString .= self::implodeUnindexed($array) . "\n";
 					break;
 				} else
-					$returnString .= self::getCurrentIndentation () . $key . ' => ';
+					$returnString .= $key . ' => ';
 
 				/** Evaluate VALUE **/
 				if (is_string($value))
@@ -64,5 +64,21 @@ namespace PhpArrayConfigurator\CodeCooking
 				$returnString .= "\t";
 			return $returnString;
 		}
+
+		protected static function implodeUnindexed(array $values)
+		{
+			$returnString = '';
+			foreach ($values as $key => $value)
+			{
+				if ($key !== 0)
+					$returnString .= ', ';
+				if (is_string($value))
+					$returnString .= "'$value'";
+				else
+					$returnString .= $value;
+			}
+			return $returnString;
+		}
+
 	}
 }
