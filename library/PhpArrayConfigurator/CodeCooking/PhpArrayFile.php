@@ -73,6 +73,8 @@ namespace PhpArrayConfigurator\CodeCooking
 					$returnString .= self::recurse($value);
 					$returnString .= self::getCurrentIndentation() . ")";
 				}
+				elseif (is_bool($value))
+					$returnString .= $value ? 'true' : 'false';
 				else
 					$returnString .= $value;
 
